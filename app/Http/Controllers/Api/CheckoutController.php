@@ -17,7 +17,7 @@ class CheckoutController extends Controller
     // Validation (basic)
     $request->validate([
         'address' => 'required|exists:customer_address,id',
-        'user_id' => 'required|exists:customers,id',
+        'user_id' => 'required|exists:users,id',
         'cart' => 'required|array|min:1',
         'cart.*.product_id' => 'required|integer',
         'cart.*.quantity' => 'required|integer|min:1',
