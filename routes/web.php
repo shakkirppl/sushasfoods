@@ -79,52 +79,52 @@ Route::post('/admin-login-post', [RegisterController::class, 'admin_login_post']
 Route::post('/sign-out', [AuthController::class, 'signOut'])->name('sign-out');
 
 Route::middleware(['setCountryStore'])->group(function () {
-    Route::get('/', [HomeController::class, 'index']);
-    Route::get('/combo', [HomeController::class, 'combo']);
-Route::get('/get-product-price', [HomeController::class, 'getProductPrice']);
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::get('/guest-checkout', [CheckoutController::class, 'guest_checkout'])->name('guest-checkout');
+    // Route::get('/', [HomeController::class, 'index']);
+    // Route::get('/combo', [HomeController::class, 'combo']);
+// Route::get('/get-product-price', [HomeController::class, 'getProductPrice']);
+// Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+// Route::get('/guest-checkout', [CheckoutController::class, 'guest_checkout'])->name('guest-checkout');
 
-Route::get('/cart/add', [CartController::class, 'addToCart'])->name('cart/add');
-Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
-Route::post('/cart/add/home', [CartController::class, 'homeAddToCart'])->name('cart/add/home');
-Route::get('lang/change/{id}',[HomeController::class, 'lang_change']);
-Route::post('/set-country', [HomeController::class, 'setCountry'])->name('set.country');
+// Route::get('/cart/add', [CartController::class, 'addToCart'])->name('cart/add');
+// Route::get('/cart/count', [CartController::class, 'cartCount'])->name('cart.count');
+// Route::post('/cart/add/home', [CartController::class, 'homeAddToCart'])->name('cart/add/home');
+// Route::get('lang/change/{id}',[HomeController::class, 'lang_change']);
+// Route::post('/set-country', [HomeController::class, 'setCountry'])->name('set.country');
 
-Route::get('/product-view/{id}', [ProductDetailController::class, 'view'])->name('product.view');
-Route::get('/product.reviews/{id}', [ProductDetailController::class, 'reviews'])->name('product.reviews');
+// Route::get('/product-view/{id}', [ProductDetailController::class, 'view'])->name('product.view');
+// Route::get('/product.reviews/{id}', [ProductDetailController::class, 'reviews'])->name('product.reviews');
 
-Route::get('/view-cart', [CartController::class, 'view_cart']);
-Route::post('/login-user', [RegisterController::class, 'login_user'])->name('login-user');
-Route::post('/register-user', [RegisterController::class, 'register_user'])->name('register-user');
-Route::get('/user-login', [RegisterController::class, 'login']);
-Route::get('/user-register', [RegisterController::class, 'register']);
-Route::get('/address.new', [RegisterController::class, 'address_new'])->name('address.new');
-
-
-Route::post('/save-orders', [CheckoutController::class, 'store_order_details'])->name('save.details');
-Route::post('/save-orders-guest', [CheckoutController::class, 'store_guest_order_details'])->name('save.details.guest');
-
-Route::get('/account', [RegisterController::class, 'account']);
-Route::get('/your-orders', [YourOrdersController::class, 'orders']);
-Route::get('/return-items/{id}', [YourOrdersController::class, 'return_item']);
-Route::get('/re-order/{id}', [CheckoutController::class, 're_order']);
-Route::get('/cancel-order/{id}', [CheckoutController::class, 'cancel_order']);
-
-Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-
-Route::get('/your-profile', [YourOrdersController::class, 'yourprofile']);
-Route::post('/return.item', [YourOrdersController::class, 'return_item_store'])->name('return.item');
-Route::post('/calculate-shipping-charge', [CheckoutController::class, 'calculateShippingCharge'])->name('calculate.shipping.charge');
-Route::get('/get-states/{countryId}', [HomeController::class, 'getStates'])->name('get-states');
+// Route::get('/view-cart', [CartController::class, 'view_cart']);
+// Route::post('/login-user', [RegisterController::class, 'login_user'])->name('login-user');
+// Route::post('/register-user', [RegisterController::class, 'register_user'])->name('register-user');
+// Route::get('/user-login', [RegisterController::class, 'login']);
+// Route::get('/user-register', [RegisterController::class, 'register']);
+// Route::get('/address.new', [RegisterController::class, 'address_new'])->name('address.new');
 
 
-Route::get('/order-confirmation/{id}', [CheckoutController::class, 'order_confirmation'])->name('order-confirmation');
+// Route::post('/save-orders', [CheckoutController::class, 'store_order_details'])->name('save.details');
+// Route::post('/save-orders-guest', [CheckoutController::class, 'store_guest_order_details'])->name('save.details.guest');
 
-Route::get('/product-review/{id}', [ProductDetailController::class, 'product_review'])->name('product-review');
-Route::get('/customer-address', [RegisterController::class, 'customer_address'])->name('customer-address');
-Route::post('/save.review', [ReviewController::class, 'save_review'])->name('save.review');
+// Route::get('/account', [RegisterController::class, 'account']);
+// Route::get('/your-orders', [YourOrdersController::class, 'orders']);
+// Route::get('/return-items/{id}', [YourOrdersController::class, 'return_item']);
+// Route::get('/re-order/{id}', [CheckoutController::class, 're_order']);
+// Route::get('/cancel-order/{id}', [CheckoutController::class, 'cancel_order']);
+
+// Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+// Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+
+// Route::get('/your-profile', [YourOrdersController::class, 'yourprofile']);
+// Route::post('/return.item', [YourOrdersController::class, 'return_item_store'])->name('return.item');
+// Route::post('/calculate-shipping-charge', [CheckoutController::class, 'calculateShippingCharge'])->name('calculate.shipping.charge');
+// Route::get('/get-states/{countryId}', [HomeController::class, 'getStates'])->name('get-states');
+
+
+// Route::get('/order-confirmation/{id}', [CheckoutController::class, 'order_confirmation'])->name('order-confirmation');
+
+// Route::get('/product-review/{id}', [ProductDetailController::class, 'product_review'])->name('product-review');
+// Route::get('/customer-address', [RegisterController::class, 'customer_address'])->name('customer-address');
+// Route::post('/save.review', [ReviewController::class, 'save_review'])->name('save.review');
 
 
     // Your routes here

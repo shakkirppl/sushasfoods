@@ -82,7 +82,7 @@
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> Size</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Size" name="size"  required="true"  value="{{old('size')}}" />
+                            <input type="text" class="form-control" placeholder="Size" name="size"   value="{{old('size')}}" />
                           </div>
                         </div>
                       </div>
@@ -105,8 +105,26 @@
                       <textarea class="form-control" name="description_full" id="description-editor">{{ old('description_full') }}</textarea>
                     </div>
                 </div>
+
+                
 </div>
 
+    <div class="col-md-12">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label required"> Video File</label>
+            <div class="col-sm-9">
+                <input type="file" class="form-control" name="video"  accept="video/*"/>
+            </div>
+        </div>
+    </div>
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label required"> Link</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Video Link" name="video_link"    value="{{old('video_link')}}" />
+                          </div>
+                        </div>
+                      </div>
             </div>
             <div class="row">
 

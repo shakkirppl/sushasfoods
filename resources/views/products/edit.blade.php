@@ -101,6 +101,23 @@
                 </div>
 </div>
 
+   <div class="col-md-12">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label required"> Video File</label>
+            <div class="col-sm-9">
+                <input type="file" class="form-control" name="video"  accept="video/*"/>
+            </div>
+        </div>
+    </div>
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label required"> Link</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" placeholder="Video Link" name="video_link"    value="{{old('video_link')}}" />
+                          </div>
+                        </div>
+                      </div>
+                      
       <div class="col-md-12">
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> Additional Images</label>

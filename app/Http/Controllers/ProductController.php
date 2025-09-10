@@ -60,7 +60,7 @@ public function store(Request $request)
    $validator = Validator::make($request->all(), [
        'product_name' => 'required|string|max:255',
        'single_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,jfif,svg|max:500',
-    
+        'video' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:20480'
    ]);
 
    if ($validator->fails()) {
@@ -83,6 +83,16 @@ public function store(Request $request)
         $path = 'uploads/products';
         $singleImageName = $this->file($file,$path,748,748);
     }
+if ($request->hasFile('video')) {
+    $videoFile = $request->file('video');
+
+    if ($videoFile->isValid()) {
+        $videoName = time() . '_' . $videoFile->getClientOriginalName();
+        $videoFile->move(public_path('uploads/products'), $videoName);
+
+        // save $videoName in DB if needed
+    }
+}
    $product = Product::create([
        'product_name' => $request->product_name,
        'description' => $request->description,
@@ -90,7 +100,9 @@ public function store(Request $request)
        'product_slug' => $item_slug,
        'package_type' => $request->package_type,
        'category_id' => $request->category_id,
-       'image' => $singleImageName,     
+       'image' => $singleImageName,   
+       'video' => $videoName ?? null,  
+       'video_link' =>$request->video_link ?? null,
    ]);
     $countries=Countries::get();
     foreach($countries as $country)
@@ -453,7 +465,17 @@ public function updateProduct(Request $request)
         return redirect()->back()->withErrors($validator)->withInput();
     }
     try {
-    DB::transaction(function () use ($request) {
+        if ($request->hasFile('video')) {
+    $videoFile = $request->file('video');
+
+    if ($videoFile->isValid()) {
+        $videoName = time() . '_' . $videoFile->getClientOriginalName();
+        $videoFile->move(public_path('uploads/products'), $videoName);
+
+        // save $videoName in DB if needed
+    }
+}
+    DB::transaction(function () use ($request,$videoName) {
 
         $product = Product::find($request->product_id);
         $item_slug = preg_replace('~[^\pL\d]+~u', '-',$request->product_name);  
@@ -467,8 +489,11 @@ public function updateProduct(Request $request)
         $product->product_name = $request->product_name;
         $product->product_slug = $item_slug;
         $product->description = $request->description;
+        $product->description_full=$request->description_full;
         $product->package_type = $request->package_type;
         $product->category_id = $request->category_id;
+        $product->video=$videoName;
+        $product->video_link=$request->video_link ?? null;
         $product->save();
         
         $multipleImages = [];

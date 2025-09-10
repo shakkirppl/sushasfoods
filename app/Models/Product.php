@@ -9,7 +9,7 @@ use App\Models\Scopes\LanguageScope;
 class Product extends Model
 {
     protected $fillable = [
-        'product_name','category_id', 'description', 'has_size', 'package_type', 'status', 'product_name_ar', 'description_ar', 'image','product_slug','short_description','description_full','short_description_ar'
+        'product_name','category_id', 'description', 'has_size', 'package_type', 'status', 'product_name_ar', 'description_ar', 'image','product_slug','short_description','description_full','video','video_link','short_description_ar'
     ];
     use HasFactory;
 
