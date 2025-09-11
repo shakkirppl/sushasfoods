@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\CustomerAddressController;
 use App\Http\Controllers\Api\SingleViewApiController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaymentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -61,5 +63,6 @@ Route::get('/whatInFarms-most-cultivated-crops', [SingleViewApiController::class
 Route::get('/whatInFarms-most-cultivated-crops-view-all', [SingleViewApiController::class, 'whatInFarms_most_cultivated_view_all']);
 Route::get('/whatInFarms-Category', [SingleViewApiController::class, 'whatInFarms_Category']);
 
-
+Route::post('/create-order', [PaymentController::class, 'createOrder']);
+Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
 
