@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;   // ✅ Add this line
 use Illuminate\Http\Request;
 use Razorpay\Api\Api;
 
