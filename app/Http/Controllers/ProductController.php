@@ -460,7 +460,7 @@ public function updateProduct(Request $request)
        'product_id' => 'required|exists:products,id',
      
     ]);
-
+  $videoName = null;
     if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
     }
@@ -475,16 +475,15 @@ public function updateProduct(Request $request)
         // save $videoName in DB if needed
     }
 }
-    DB::transaction(function () use ($request,$videoName) {
+    DB::transaction(function () use ($request,$videoName ) {
 
         $product = Product::find($request->product_id);
-        $item_slug = preg_replace('~[^\pL\d]+~u', '-',$request->product_name);  
-        $item_slug = iconv('utf-8', 'us-ascii//TRANSLIT', $item_slug);  
-        $item_slug = preg_replace('~[^-\w]+~', '', $item_slug);
-        $item_slug = trim($item_slug, '-');  
-        $item_slug = preg_replace('~-+~', '-', $item_slug);  
-        $item_slug = strtolower($item_slug);
-        $item_slug=$item_slug;
+       $item_slug = preg_replace('~[^\pL\d]+~u', '-', $request->product_name);
+$item_slug = @iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $item_slug) ?: $request->product_name;
+$item_slug = preg_replace('~[^-\w]+~', '', $item_slug);
+$item_slug = trim($item_slug, '-');
+$item_slug = preg_replace('~-+~', '-', $item_slug);
+$item_slug = strtolower($item_slug);
 
         $product->product_name = $request->product_name;
         $product->product_slug = $item_slug;
@@ -492,7 +491,10 @@ public function updateProduct(Request $request)
         $product->description_full=$request->description_full;
         $product->package_type = $request->package_type;
         $product->category_id = $request->category_id;
-        $product->video=$videoName;
+       if ($videoName) {
+                // optionally delete old video file here if you want
+                $product->video = $videoName;
+            }
         $product->video_link=$request->video_link ?? null;
         $product->save();
         
