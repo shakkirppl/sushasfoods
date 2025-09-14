@@ -58,13 +58,9 @@ class AllOrderController extends Controller
     public function show_accepted_orders(Request $request)
     {
         try {
-            $id=Auth::user()->id;
-        $store=Auth::user()->store_id;
-        $orders = Order::with('orderdetails', 'store')
+      
+         $orders = Order::with('orderdetails', 'store')
         ->where('delivery_status', 'Accepted')
-        ->when($id != 5, function ($query) use ($store) {
-            return $query->where('store_id', $store);
-        })
         ->orderBy('id', 'desc') 
         ->get();
         return view('orders.index',compact('orders'));
@@ -79,9 +75,7 @@ class AllOrderController extends Controller
         $store=Auth::user()->store_id;
         $orders = Order::with('orderdetails', 'store')
         ->where('delivery_status', 'Packed')
-        ->when($id != 5, function ($query) use ($store) {
-            return $query->where('store_id', $store);
-        })
+      
         ->orderBy('id', 'desc') 
         ->get();
         return view('orders.index',compact('orders'));
@@ -97,9 +91,7 @@ class AllOrderController extends Controller
         $store=Auth::user()->store_id;
         $orders = Order::with('orderdetails', 'store')
         ->where('delivery_status', 'Delivered')
-        ->when($id != 5, function ($query) use ($store) {
-            return $query->where('store_id', $store);
-        })
+       
         ->orderBy('id', 'desc') 
         ->get();
         return view('orders.index',compact('orders'));
@@ -114,9 +106,7 @@ class AllOrderController extends Controller
         $store=Auth::user()->store_id;
         $orders = Order::with('orderdetails', 'store')
         ->where('delivery_status', 'Cancel')
-        ->when($id != 5, function ($query) use ($store) {
-            return $query->where('store_id', $store);
-        })
+       
         ->orderBy('id', 'desc') 
 
         ->get();

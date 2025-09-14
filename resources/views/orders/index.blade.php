@@ -42,7 +42,7 @@
                  <th>OrderID</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Country</th>
+            
                 <th>Total amount</th>
                 <th>Actions</th>
             </tr>
@@ -56,7 +56,7 @@
                     <td>{{ $order->order_no}}</td>
                     <td>{{ $order->first_name }} {{$order->last_name}}</td>
                     <td>{{ $order->phone_number }}</td>
-                    <td>{{ $order->store->store_name }}</td>
+                 
                      <td>{{ $order->total_amount }}</td>
                      
 

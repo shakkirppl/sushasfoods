@@ -61,7 +61,7 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
               
                 <div class="image" style="text-align:center;">
-               <img src="{{url('front-end/images/header/blacklogo.png')}}" alt="logo" class="responsive">
+               <img src="{{url('front-end/images/header/logo.jpeg')}}" alt="logo" class="responsive">
                 </div>
            
               <h4>Hello! let's get started</h4>
