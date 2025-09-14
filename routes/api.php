@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\SingleViewApiController;
 use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\ReviewController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +68,4 @@ Route::get('/whatInFarms-Category', [SingleViewApiController::class, 'whatInFarm
 Route::post('/create-order', [PaymentController::class, 'createOrder']);
 Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
 
+Route::post('/reviews', [ReviewController::class, 'store']);
