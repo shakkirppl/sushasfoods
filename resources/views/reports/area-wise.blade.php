@@ -60,7 +60,7 @@
                                     <th>#</th>
                                     <th>Order ID</th>
                                     <th>Customer</th>
-                                    <th>Country</th>
+                                  
                                     <th>Order Date</th>
                                     <th>Total Amount</th>
                                 </tr>
@@ -72,7 +72,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $res->order_no }}</td>
                                         <td>{{ $res->first_name }}</td>
-                                        <td>{{ $res->country->country_name }}</td>
+                                    
                                        <td>{{ $res->created_at->format('Y-m-d') }}</td>
                                         <td>{{ $res->total_amount }}</td>
                                     </tr>
