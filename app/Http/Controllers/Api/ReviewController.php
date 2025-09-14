@@ -13,9 +13,8 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_id'    => 'required|exists:products,id',
-            'user_id'       => 'required|exists:users,id',
-            'store_id'      => 'nullable|exists:stores,id',
+            'product_id'    => 'required',
+            'user_id'       => 'required',
             'review'        => 'required|string',
             'start_ratings' => 'required|numeric|min:1|max:5',
             'name'          => 'nullable|string|max:255',
@@ -33,10 +32,10 @@ class ReviewController extends Controller
             'in_time'       => now()->toTimeString(),
             'product_id'    => $request->product_id,
             'user_id'       => $request->user_id,
-            'store_id'      => $request->store_id,
+            'store_id'      => 1,
             'review'        => $request->review,
             'start_ratings' => $request->start_ratings,
-            'name'          => $request->name,
+            'name'          => '',
             'status'        => 'Pending', // default
         ]);
 
