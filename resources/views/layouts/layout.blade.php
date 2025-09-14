@@ -37,7 +37,7 @@
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="">
           <img src="{{url('front-end/images/header/logo.jpeg')}}" class="" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href=""><img src="{{url('front-end/images/header/blacklogo.png')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href=""><img src="{{url('front-end/images/header/logo.jpeg')}}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
