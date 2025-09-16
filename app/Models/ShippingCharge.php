@@ -8,11 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class ShippingCharge extends Model
 {
     use HasFactory;
-
+  protected $table = 'shipping_charge';
    
-    public function scopeStore($query,$store)
-    {
-         return $query->where('store_id',$store);
-    }
+   protected $fillable = ['location_type', 'min_weight', 'max_weight', 'charge'];
  
 }

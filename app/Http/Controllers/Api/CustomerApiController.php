@@ -18,12 +18,44 @@ class CustomerApiController extends Controller
     //
    public function customer_store(Request $request)
 {
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
-        'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-        'mobile' => ['required', 'string', 'max:255', 'unique:customers,phone_number', 'regex:/^[6-9]\d{9}$/'],
-        'password' => 'required|string|min:4',
-    ]);
+    $validator = Validator::make(
+        $request->all(),
+        [
+            'name' => 'required|string|min:24|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'unique:users,email',
+            ],
+            'mobile' => [
+                'required',
+                'string',
+                'min:4',
+                'max:15',
+                'unique:customers,phone_number',
+                'regex:/^[6-9]\d{9}$/',
+            ],
+            'password' => 'required|string|min:4',
+        ],
+        [ // Custom messages
+            'name.required' => 'Name is required.',
+            'name.min' => 'Name must be at least 2 characters.',
+            
+            'email.required' => 'Email is required.',
+            'email.email' => 'Invalid email format.',
+            'email.unique' => 'This email already exists.',
+
+            'mobile.required' => 'Mobile number is required.',
+            'mobile.unique' => 'This mobile number already exists.',
+            'mobile.regex' => 'Mobile number must be 10 digits starting with 6-9.',
+            'mobile.min' => 'Mobile number must be at least 4 digits.',
+            
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 4 characters.',
+        ]
+    );
 
     if ($validator->fails()) {
         return response()->json([

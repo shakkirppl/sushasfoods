@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\ShippingController;
 
 
 /*
@@ -69,3 +70,4 @@ Route::post('/create-order', [PaymentController::class, 'createOrder']);
 Route::post('/verify-payment', [PaymentController::class, 'verifyPayment']);
 
 Route::post('/reviews', [ReviewController::class, 'store']);
+Route::post('/calculate-shipping', [ShippingController::class, 'calculateShipping']);
