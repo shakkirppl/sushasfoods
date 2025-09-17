@@ -21,7 +21,7 @@ class CustomerApiController extends Controller
     $validator = Validator::make(
         $request->all(),
         [
-            'name' => 'required|string|min:24|max:255',
+            'name' => 'required|string|min:2|max:255',
             'email' => [
                 'required',
                 'string',
