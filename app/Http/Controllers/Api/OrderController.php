@@ -29,9 +29,9 @@ public function getOrderItems($order_id)
 public function cancelOrder($order_id)
 {
     $order = Order::findOrFail($order_id);
-    if ($order->status !== 'Placed') {
-        return response()->json(['error' => 'Only placed orders can be canceled.'], 403);
-    }
+    // if ($order->status !== 'Placed') {
+    //     return response()->json(['error' => 'Only placed orders can be canceled.'], 403);
+    // }
 
     $order->update(['status' => 'Cancelled']);
 
