@@ -33,7 +33,7 @@ public function cancelOrder($order_id)
     //     return response()->json(['error' => 'Only placed orders can be canceled.'], 403);
     // }
 
-    $order->update(['status' => 'Cancelled']);
+    $order->update(['delivery_status' => 'Cancel']);
 
     OrderDetails::where('order_id', $order_id)->update(['status' => 'Cancelled']);
 
