@@ -14,7 +14,7 @@ class ShippingController extends Controller
     public function calculateShipping(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'address_id' => 'required|exists:customer_addresses,id',
+            'address_id' => 'required|exists:customer_address,id',
             'items' => 'required|array',
             'items.*.product_size_id' => 'required|exists:product_sizes,id',
             'items.*.qty' => 'required|integer|min:1',
