@@ -102,11 +102,15 @@ class HomeApiController extends Controller
             ->take(6)
             ->with(['baseprices', 'images'])
             ->get();
-
+        $prreviews = Review::with('user')
+            ->where('product_id', $id)
+            ->where('status', 'Active')
+            ->get();
         return response()->json([
             'status' => true,
             'message' => 'Product details loaded successfully',
             'product' => $product,
+            'prreviews'=>$prreviews,
             'related_products' => $relatedProducts
         ]);
     } catch (\Exception $e) {
