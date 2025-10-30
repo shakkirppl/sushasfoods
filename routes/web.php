@@ -245,7 +245,7 @@ Route::get('review-pending', [ReviewController::class, 'review_pending']);
 Route::get('review-active', [ReviewController::class, 'review_active']);
 Route::get('review-block', [ReviewController::class, 'review_block']);
 Route::get('review-active/{id}', [ReviewController::class, 'active']);
-Route::get('review-active/{id}', [ReviewController::class, 'block']);
+Route::get('review-block/{id}', [ReviewController::class, 'block']);
 
 Route::get('sales-report/date-wise', [ReportController::class, 'salesDateWiseReport'])->name('sales-report/date-wise');
 Route::get('sales-report/country-wise', [ReportController::class, 'salesCountryWiseReport'])->name('sales-report/country-wise');

@@ -32,25 +32,25 @@
             <tr>
                 <th>Product</th>
                 <th>User</th>
-                <th>Country</th>
                 <th>Comment</th>
                 <th>Rating</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach ($review as $revie)
-                <tr>
-                    <td> @foreach ($revie->product as $revi) {{ $revi->product_name }} @endforeach</td>
-                    <td>@foreach ($revie->user as $revi) {{ $revi->name }} @endforeach </td>
-                    <td>@foreach ($revie->stores as $revi) {{ $revi->store_name }} @endforeach</td>
-                    <td>{{ $revie->review }}</td>
-                    <td>{{ $revie->start_ratings }}</td>
-                    <td><a class="btn btnsmall btn-outline-secondary btn-icon-text" href="{{ url('review-active',$revie->id) }}"> Active</a>
-                    <a class="btn btnsmall btn-outline-danger btn-icon-text" href="{{ url('review-block',$revie->id) }}"> Block</a></td>
-                </tr>
-            @endforeach
-        </tbody>
+      <tbody>
+@foreach ($review as $revie)
+    <tr>
+        <td>{{ $revie->products->product_name ?? '-' }}</td>
+        <td>{{ $revie->users->name ?? '-' }}</td>
+        <td>{{ $revie->review }}</td>
+        <td>{{ $revie->start_ratings }}</td>
+        <td>
+            <a class="btn btn-sm btn-outline-danger" href="{{ url('review-block', $revie->id) }}">Block</a>
+            <a class="btn btn-sm btn-outline-secondary" href="{{ url('review-active', $revie->id) }}">Active</a>
+        </td>
+    </tr>
+@endforeach
+</tbody>
     </table>
                   </div>
                 </div>

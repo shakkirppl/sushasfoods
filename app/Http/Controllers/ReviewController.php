@@ -52,65 +52,63 @@ class ReviewController extends Controller
       
         try {
      
-           $review=Review::with('product','stores','user')->where('status','Pending')->get();
+           $review=Review::with('product','user')->where('status','Pending')->get();
           return view('review.pending',compact('review'));
     } catch (\Exception $e) {
         return $e->getMessage();
       }     
     
     }
-    public function review_active(Request $request)
-    {
-      
-        try {
-     
-           $review=Review::with('product','stores','user')->where('status','Active')->get();
-          return view('review.active',compact('review'));
-    } catch (\Exception $e) {
-        return $e->getMessage();
-      }     
-    
-    }
-    public function review_block(Request $request)
-    {
-      
-        try {
-     
-           $review=Review::with('product','stores','user')->where('status','Block')->get();
-          return view('review.block',compact('review'));
-    } catch (\Exception $e) {
-        return $e->getMessage();
-      }     
-    
-    }
-    public function active($id)
-    {
-      
-        try {
-     
-           $review=Review::find($id);
-           $review->status='Active';
-           $review->save();
-           return back();
-    } catch (\Exception $e) {
-        return $e->getMessage();
-      }     
-    
-    }
+   public function review_active(Request $request)
+{
+    try {
+        $review = Review::with('product', 'stores', 'user')
+            ->where('status', 'Active')
+            ->get();
 
-    public function block($id)
-    {
-      
-        try {
-     
-           $review=Review::find($id);
-           $review->status='Block';
-           $review->save();
-           return back();
+        return view('review.active', compact('review'));
     } catch (\Exception $e) {
         return $e->getMessage();
-      }     
-    
     }
+}
+
+public function review_block(Request $request)
+{
+    try {
+        $review = Review::with('product', 'stores', 'user')
+            ->where('status', 'Block')
+            ->get();
+
+        return view('review.block', compact('review'));
+    } catch (\Exception $e) {
+        return $e->getMessage();
+    }
+}
+
+public function active($id)
+{
+    try {
+        $review = Review::findOrFail($id);
+        $review->status = 'Active';
+        $review->save();
+
+        return back()->with('success', 'Review activated successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', $e->getMessage());
+    }
+}
+
+public function block($id)
+{
+    try {
+        $review = Review::findOrFail($id);
+        $review->status = 'Block';
+        $review->save();
+
+        return back()->with('success', 'Review blocked successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', $e->getMessage());
+    }
+}
     
 }
